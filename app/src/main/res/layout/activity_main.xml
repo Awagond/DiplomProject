@@ -24,7 +24,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:text="У вас уже есть аккаунт?"
-        android:onClick="onClick"/>
+        android:onClick="onClicklogin"/>
 
     <Button
         android:id="@+id/registerBtn"
@@ -35,6 +35,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="50dp"
-        android:text="Регистрация" />
+        android:text="Регистрация"
+        android:onClick="onClickregister"/>
 
 </RelativeLayout>

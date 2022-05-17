@@ -86,7 +86,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Войти"/>
+        android:text="Войти" />
 
     <TextView
         android:id="@+id/admin_link"
