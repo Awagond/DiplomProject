@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.diplomproject.Model.Users;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBtn;
     private EditText phoneInput, passwordInput;
     private ProgressDialog loadingBar;
+    private TextView AdminLink, NotAdminLink;
 
     private String parentDbName = "Users";
     private CheckBox checkBoxRemeberMe;
@@ -42,7 +44,30 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.passwordInput);
         loadingBar = new ProgressDialog(this);
         checkBoxRemeberMe = (CheckBox) findViewById(R.id.login_checkbox);
+        NotAdminLink = (TextView) findViewById(R.id.not_admin_link);
+        AdminLink = (TextView) findViewById(R.id.admin_link);
+
         Paper.init(this);
+
+        AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminLink.setVisibility(View.INVISIBLE);
+                NotAdminLink.setVisibility(View.VISIBLE);
+                loginBtn.setText("Вход для админа");
+                parentDbName = "Admins";
+            }
+        });
+
+        NotAdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminLink.setVisibility(View.VISIBLE);
+                NotAdminLink.setVisibility(View.INVISIBLE);
+                loginBtn.setText("Войти");
+                parentDbName = "Users";
+            }
+        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,11 +114,19 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(usersData.getPhone().equals(phone)){
                         if(usersData.getPassword().equals(password)){
-                            loadingBar.dismiss();
-                            Toast.makeText(LoginActivity.this, "Успешеый вход!", Toast.LENGTH_SHORT).show();
+                            if(parentDbName.equals("Users")){
+                                loadingBar.dismiss();
+                                Toast.makeText(LoginActivity.this, "Успешеый вход!", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                            } else if(parentDbName.equals("Admins")){
+                                loadingBar.dismiss();
+                                Toast.makeText(LoginActivity.this, "Успешеый вход!", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(LoginActivity.this, AdminAddNewProductActivity.class);
+                                startActivity(intent);
+                            }
                         } else{
                             loadingBar.dismiss();
                             Toast.makeText(LoginActivity.this, "Неправильный пароль!", Toast.LENGTH_SHORT).show();

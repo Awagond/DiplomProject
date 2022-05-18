@@ -92,24 +92,23 @@
         android:id="@+id/admin_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:text="Для админа"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        />
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/not_admin_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:text="Для клиента"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        />
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
