@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Admin.AdminCategoryActivity">
+
+    <TextView
+        android:id="@+id/slogan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите категорию"
+        android:textSize="25sp"
+        android:textStyle="bold|italic"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+    android:id="@+id/first_line"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_marginTop="10dp"
+    android:layout_below="@+id/slogan">
+
+        <ImageView
+            android:id="@+id/gornorudnie"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/gornorudnie"
+            android:layout_margin="10dp"
+            />
+        <ImageView
+            android:id="@+id/nestacionarnie"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/nestacionarnie"
+            android:layout_margin="10dp"
+            />
+        <ImageView
+            android:id="@+id/dlyasignalizaciiiblokirovki"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/dlyasignalizaciiiblokirovki"
+            android:layout_margin="10dp"
+            />
+        <ImageView
+            android:id="@+id/kabeliiprovodamontazhnie"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/kabeliiprovodamontazhnie"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

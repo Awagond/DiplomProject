@@ -1,4 +1,4 @@
-package com.example.diplomproject;
+package com.example.diplomproject.ui.Users;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.diplomproject.LoginActivity;
 import com.example.diplomproject.Model.Users;
 import com.example.diplomproject.Prevalent.Prevalent;
+import com.example.diplomproject.R;
+import com.example.diplomproject.RegisterActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
