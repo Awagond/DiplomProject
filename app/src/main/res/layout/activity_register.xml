@@ -16,7 +16,7 @@
         />
 
     <EditText
-        android:id="@+id/register_username_input"
+        android:id="@+id/usernameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/app_logo"
@@ -26,51 +26,48 @@
         android:layout_marginLeft="25dp"
         android:hint="Имя пользователя"
         android:inputType="text"
-        android:textColorHint="@android:color/white"
-        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/black"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         />
 
     <EditText
-        android:id="@+id/register_phone_input"
+        android:id="@+id/phoneInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_username_input"
+        android:layout_below="@+id/usernameInput"
         android:padding="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
         android:hint="Номер телефона"
         android:inputType="number"
-        android:textColorHint="@android:color/white"
-        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/black"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         />
 
     <EditText
-        android:id="@+id/register_password_input"
+        android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_phone_input"
+        android:layout_below="@+id/phoneInput"
         android:padding="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
         android:hint="Пароль"
         android:inputType="textPassword"
-        android:textColorHint="@android:color/white"
-        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/black"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         />
 
     <Button
-        android:id="@+id/register_btn"
+        android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_password_input"
+        android:layout_below="@+id/passwordInput"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
