@@ -13,11 +13,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.diplomproject.Model.Users;
+import com.example.diplomproject.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog loadingBar;
 
     private String parentDbName = "Users";
+    private CheckBox checkBoxRemeberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         phoneInput = (EditText) findViewById(R.id.phoneInput);
         passwordInput = (EditText) findViewById(R.id.passwordInput);
         loadingBar = new ProgressDialog(this);
+        checkBoxRemeberMe = (CheckBox) findViewById(R.id.login_checkbox);
+        Paper.init(this);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +72,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void ValidateUser(String phone, String password) {
+
+        if(checkBoxRemeberMe.isChecked()){
+            Paper.book().write(Prevalent.UserPhoneKey, phone);
+            Paper.book().write(Prevalent.UserPasswordKey, password);
+        }
+
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
