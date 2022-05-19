@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.diplomproject.ui.Admin.AdminAddNewProductActivity;
 import com.example.diplomproject.Model.Users;
 import com.example.diplomproject.Prevalent.Prevalent;
 import com.example.diplomproject.ui.Admin.AdminCategoryActivity;
