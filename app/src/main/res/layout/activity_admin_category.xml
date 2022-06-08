@@ -2,160 +2,243 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".AdminCategoryActivity">
 
-    <TextView
-        android:id="@+id/slogan_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:text="Категории"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        />
+        <TextView
+            android:id="@+id/slogan_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:text="Категории"
+            android:textAlignment="center"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
 
+        <LinearLayout
+            android:id="@+id/linear1_category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/slogan_category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linear1_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/slogan_category"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+            <ImageView
+                android:id="@+id/gornorudnie"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/gornorudnie" />
 
-        <ImageView
-            android:id="@+id/gornorudnie"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/gornorudnie"
-            android:layout_margin="15dp"
-            />
+            <ImageView
+                android:id="@+id/dlyasignalizaciiiblokirovki"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/dlyasignalizaciiiblokirovki" />
 
-        <ImageView
-            android:id="@+id/dlyasignalizaciiiblokirovki"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/dlyasignalizaciiiblokirovki"
-            android:layout_margin="15dp"
-            />
+            <ImageView
+                android:id="@+id/nestacionarnie"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/nestacionarnie" />
 
-        <ImageView
-            android:id="@+id/nestacionarnie"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/nestacionarnie"
-            android:layout_margin="15dp"
-            />
 
-        <ImageView
-            android:id="@+id/kabeliiprovodamontazhnie"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/kabeliiprovodamontazhnie"
-            android:layout_margin="15dp"
-            />
+        </LinearLayout>
 
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/linear1_category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/slogan_category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linear1_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/slogan_category"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+            <TextView
+                android:id="@+id/gornorudnie"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:text="Кабели для горнорудной промышленности" />
 
-        <ImageView
-            android:id="@+id/dlyapogruzhnihneftyanihelektronasosov"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/dlyapogruzhnihneftyanihelektronasosov"
-            android:layout_margin="15dp"
-            />
+            <TextView
+                android:id="@+id/dlyasignalizaciiiblokirovki"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="145dp"
+                android:layout_marginRight="135dp"
+                android:text="Кабели для нестационарной прокладки" />
 
-        <ImageView
-            android:id="@+id/kabelisudovieimorskiegruzonesuschie"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/kabelisudovieimorskiegruzonesuschie"
-            android:layout_margin="15dp"
-            />
+            <TextView
+                android:id="@+id/nestacionarnie"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="275dp"
+                android:text="Кабели для сигнализации и блокировки" />
 
-        <ImageView
-            android:id="@+id/kabeliupravleniya"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/kabeliupravleniya"
-            android:layout_margin="15dp"
-            />
 
-        <ImageView
-            android:id="@+id/kontrolniekabeli"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/kontrolniekabeli"
-            android:layout_margin="15dp"
-            />
+        </RelativeLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linear1_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/slogan_category"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:id="@+id/linear1_category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/slogan_category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="165dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/provodadlyatermopar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/provodadlyatermopar"
-            android:layout_margin="15dp"
-            />
+            <ImageView
+                android:id="@+id/dlyapogruzhnihneftyanihelektronasosov"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/dlyapogruzhnihneftyanihelektronasosov" />
 
-        <ImageView
-            android:id="@+id/silovie"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/silovie"
-            android:layout_margin="15dp"
-            />
+            <ImageView
+                android:id="@+id/kabelisudovieimorskiegruzonesuschie"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/kabelisudovieimorskiegruzonesuschie" />
 
-        <ImageView
-            android:id="@+id/siloviedlyaelektroustanovok"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/siloviedlyaelektroustanovok"
-            android:layout_margin="15dp"
-            />
+            <ImageView
+                android:id="@+id/kabeliupravleniya"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/kabeliupravleniya" />
 
-        <ImageView
-            android:id="@+id/provodasvyazi"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/provodasvyazi"
-            android:layout_margin="15dp"
-            />
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/linear1_category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/slogan_category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gornorudnie"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                android:text="Кабели и провода для погружных нефтяных электронасосов" />
+
+            <TextView
+                android:id="@+id/dlyasignalizaciiiblokirovki"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="145dp"
+                android:layout_marginRight="135dp"
+                android:text="Кабели судовые и морские грузонесущие" />
+
+            <TextView
+                android:id="@+id/nestacionarnie"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="275dp"
+                android:text="Кабели управления" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linear1_category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/slogan_category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="340dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/provodadlyatermopar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/provodadlyatermopar" />
+
+            <ImageView
+                android:id="@+id/silovie"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/silovie" />
+
+            <ImageView
+                android:id="@+id/siloviedlyaelektroustanovok"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/siloviedlyaelektroustanovok" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/linear1_category_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/slogan_category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="455dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/gornorudnie"
+                android:layout_width="130dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                android:text="Кабели и провода термоэлектродные" />
+
+            <TextView
+                android:id="@+id/dlyasignalizaciiiblokirovki"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="145dp"
+                android:layout_marginRight="135dp"
+                android:text="Кабели силовые" />
+
+            <TextView
+                android:id="@+id/nestacionarnie"
+                android:layout_width="120dp"
+                android:layout_height="65dp"
+                android:layout_marginLeft="275dp"
+                android:text="Кабели и провода силовые для электроустановок" />
+
+
+        </RelativeLayout>
 
 </RelativeLayout>

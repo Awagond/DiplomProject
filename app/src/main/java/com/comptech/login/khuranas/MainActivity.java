@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,login.class);
+                Intent intent=new Intent(MainActivity.this, LoginActivity.class);
            startActivity(intent);
             }
         });
@@ -45,69 +45,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
-            }
-        });
-        String UserPhoneKey =Paper.book().read(Prevalent.UserPhoneKey);
-        String UserPassword=Paper.book().read(Prevalent.UserPasswordKey);
-        if (UserPhoneKey !="" && UserPassword != "")
-        {
-            if(!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPassword))
-            {
-                AllowAccess(UserPhoneKey,UserPassword);
-                loadingBar.setTitle("Производится вход");
-                loadingBar.setMessage("Пожалуйста подождите");
-                loadingBar.setCanceledOnTouchOutside(false);
-                loadingBar.show();
-            }
-        }
-    }
-
-    private void AllowAccess(final String phone,final String password) {
-
-
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
-
-
-        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.child("Users").child(phone).exists())
-                {
-                    Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
-
-                    if (usersData.getPhone().equals(phone))
-                    {
-                        if (usersData.getPassword().equals(password))
-                        {
-
-                                Toast.makeText(MainActivity.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
-                                loadingBar.dismiss();
-
-                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                                Prevalent.currentOnlineUser = usersData;
-                                startActivity(intent);
-                            }
-
-                        else
-                        {
-
-                            Toast.makeText(MainActivity.this, "Неверный пароль", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
-                        }
-                    }
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this, "Аккаунт с номером " + phone + "отсутствует", Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }

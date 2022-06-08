@@ -23,7 +23,7 @@ import com.rey.material.widget.CheckBox;
 
 import io.paperdb.Paper;
 
-public class login extends AppCompatActivity
+public class LoginActivity extends AppCompatActivity
 {
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton;
@@ -140,18 +140,18 @@ public class login extends AppCompatActivity
                         {
                             if (parentDbName.equals("Admins"))
                             {
-                                Toast.makeText(login.this, "Вход администратора успешен", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Вход администратора успешен", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
-                                Intent intent = new Intent(login.this, AdminCategoryActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
                                 startActivity(intent);
                             }
                             else if (parentDbName.equals("Users"))
                             {
-                                Toast.makeText(login.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
-                                Intent intent = new Intent(login.this, HomeActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 Prevalent.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }
@@ -159,13 +159,13 @@ public class login extends AppCompatActivity
                         else
                         {
                             loadingBar.dismiss();
-                            Toast.makeText(login.this, "Неверный пароль", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Неверный пароль", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
                 else
                 {
-                    Toast.makeText(login.this, "Аккаунт с номером " + phone + " отсутствует.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Аккаунт с номером " + phone + " отсутствует.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }
             }

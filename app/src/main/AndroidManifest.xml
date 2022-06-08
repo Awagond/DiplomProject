@@ -25,7 +25,7 @@
         <activity android:name=".AdminCategoryActivity" />
         <activity android:name=".AdminAddnewProductActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".login" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
