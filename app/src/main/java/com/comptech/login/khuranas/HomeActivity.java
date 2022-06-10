@@ -12,19 +12,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.comptech.login.khuranas.Model.Products;
 import com.comptech.login.khuranas.Prevalent.Prevalent;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.comptech.login.khuranas.ViewHolder.ProductViewHolder;
+import com.comptech.login.khuranas.ViewHolder.ProductAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,6 +39,7 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    ProductAdapter adapter;
 
 
     @Override
@@ -93,11 +92,16 @@ public class HomeActivity extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        FirebaseRecyclerOptions<Products> options =
+                new FirebaseRecyclerOptions.Builder<Products>()
+                        .setQuery(ProductsRef, Products.class)
+                        .build();
 
+        adapter=new ProductAdapter(options);
+        recyclerView.setAdapter(adapter);
     }
 
 
-    @Override
     protected void onStart()
     {
         super.onStart();
@@ -108,45 +112,8 @@ public class HomeActivity extends AppCompatActivity
                         .build();
 
 
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
-                    @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
-                    {
-                        holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("$" + model.getPrice() );
-                        Picasso.get().load(model.getimage()).into(holder.imageView);
 
-
-
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent=new Intent(HomeActivity.this,ProductDetailsActivity.class);
-                                intent.putExtra("pid",model.getPid());
-                                startActivity(intent);
-                            }
-                        });
-
-                        holder.product_details_send_button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent=new Intent(HomeActivity.this,ProductDetailsActivity.class);
-                                intent.putExtra("pid",model.getPid());
-                                startActivity(intent);
-                            }
-                        });
-                    }
-
-                    @NonNull
-                    @Override
-                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-                    {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
-                        return holder;
-                    }
-                };
+        adapter=new ProductAdapter(options);
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
@@ -161,15 +128,41 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.searchmenu,menu);
+
+        MenuItem item=menu.findItem(R.id.search);
+
+        SearchView searchView=(SearchView)item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                processsearch(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                processsearch(s);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
+    private void processsearch(String s) {
+        FirebaseRecyclerOptions<Products> options =
+                new FirebaseRecyclerOptions.Builder<Products>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Products").orderByChild("pname").startAt(s).endAt(s+"\uf8ff"), Products.class)
+                        .build();
+
+        adapter=new ProductAdapter(options);
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
 
 
     @Override
