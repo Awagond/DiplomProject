@@ -8,9 +8,38 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1036295392933:android:8adcca9a00c684603ec74c",
+        "android_client_info": {
+          "package_name": "com.example.cabelpc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036295392933-r11sfg0vfhqsgnud9ufu8tbjukaslfh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIJnOyRB_Zt3i1mADKsa4--vyLm3d__6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036295392933-r11sfg0vfhqsgnud9ufu8tbjukaslfh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1036295392933:android:a54641cb21e9847b3ec74c",
         "android_client_info": {
-          "package_name": "com.comptech.login.khuranas"
+          "package_name": "com.example.diplomproject"
         }
       },
       "oauth_client": [
@@ -18,7 +47,7 @@
           "client_id": "1036295392933-v47i9k0pfhum7kj2p4ep2lagdvg1sj7o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.comptech.login.khuranas",
+            "package_name": "com.example.diplomproject",
             "certificate_hash": "beefc8187da5c023765d9647d632a4e3d276d0ee"
           }
         },

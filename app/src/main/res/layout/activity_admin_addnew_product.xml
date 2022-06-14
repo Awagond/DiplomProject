@@ -68,16 +68,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/product_prices"
-            android:text="Добавить"
             android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
-            android:padding="17dp"
             android:layout_marginTop="20dp"
-            android:textSize="18sp"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/buttons"
+            android:padding="17dp"
+            android:text="Добавить"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:background="@drawable/buttons"
-            />
+            android:textSize="18sp" />
 
 
 </RelativeLayout>
