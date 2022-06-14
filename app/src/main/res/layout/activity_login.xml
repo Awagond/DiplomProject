@@ -12,7 +12,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"></View>
+        android:layout_weight="0.5" />
     <ImageView
         android:id="@+id/login_applogo"
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"></View>
+        android:layout_weight="2" />
 
     <EditText
         android:id="@+id/login_phone_number_input"
@@ -45,7 +45,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"></View>
+        android:layout_weight="0.2" />
     <EditText
         android:id="@+id/login_password_input"
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"></View>
+            android:layout_weight="0.5" />
         <com.rey.material.widget.CheckBox
             android:id="@+id/remember_me_chkb"
             android:layout_width="0dp"
@@ -89,10 +89,11 @@
             android:textSize="15dp"
 
             />
+
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"></View>
+            android:layout_weight="0.5" />
         <TextView
             android:id="@+id/forget_password_link"
             android:layout_width="0dp"
@@ -120,10 +121,11 @@
         android:text="Войти"
         android:textColor="@android:color/white"
         />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"></View>
+        android:layout_weight="0.1" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -147,7 +149,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"></View>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/not_admin_panel_link"

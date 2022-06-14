@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,17 +30,22 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
     private Button addToCartBtn, comBtn;
+    private Button addComBtn;
     private ImageView productImage;
+    private EditText commentField;
     private ElegantNumberButton numberButton;
     private TextView productPrice, productDescription, productName;
     private String productID = "";
     private String imageAddress;
+    private String name,commentRandomKey;
     private String state = "Normal";
     private DatabaseReference ProductsRef, CommentRef;
+    private ListView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         productID = getIntent().getStringExtra("pid");
 
-
+        commentField = (EditText) findViewById(R.id.commentField);
+        addComBtn = (Button) findViewById(R.id.btn_send);
         addToCartBtn = (Button) findViewById(R.id.add_product_to_cart_btn);
         comBtn = (Button) findViewById(R.id.comBtn);
         numberButton = (ElegantNumberButton) findViewById(R.id.number_btn);
@@ -59,6 +66,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productName = (TextView) findViewById(R.id.product_name_details);
         productDescription = (TextView) findViewById(R.id.product_description_details);
         productPrice = (TextView) findViewById(R.id.product_price_details);
+
+        name = Prevalent.currentOnlineUser.getName();
 
         getProductDetails(productID);
 
@@ -78,7 +87,32 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplication(), CommentActivity.class);
+                intent.putExtra("comment_text",commentField.getText().toString());
+                intent.putExtra("user_name", name);
                 startActivity(intent);
+            }
+        });
+
+        addComBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+
+                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                String saveCurrentDate = currentDate.format(calendar.getTime());
+
+                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+                String saveCurrentTime = currentTime.format(calendar.getTime());
+
+                commentRandomKey = saveCurrentDate + "" + saveCurrentTime;
+
+
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put(commentField.getText().toString(),"text");
+                map.put(name, "");
+//                map.put("Time", commentRandomKey);
+                CommentRef.updateChildren(map);
+
             }
         });
 
