@@ -4,20 +4,21 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
-public class AdminCategoryActivity extends AppCompatActivity
-{
+public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView gornorudnie, dlyasignalizaciiiblokirovki, nestacionarnie, kabeliiprovodamontazhnie;
     private ImageView dlyapogruzhnihneftyanihelektronasosov, kabelisudovieimorskiegruzonesuschie, kabeliupravleniya, kontrolniekabeli;
     private ImageView provodadlyatermopar, silovie, siloviedlyaelektroustanovok, provodasvyazi;
+    private Button CkeckOredersBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
 
+        CkeckOredersBtn = (Button) findViewById(R.id.check_orders_btn);
 
         gornorudnie = (ImageView) findViewById(R.id.gornorudnie);
         dlyasignalizaciiiblokirovki = (ImageView) findViewById(R.id.dlyasignalizaciiiblokirovki);
@@ -32,10 +33,18 @@ public class AdminCategoryActivity extends AppCompatActivity
         siloviedlyaelektroustanovok = (ImageView) findViewById(R.id.siloviedlyaelektroustanovok);
 
 
+        CkeckOredersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         gornorudnie.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "Gornorudnie");
                 startActivity(intent);
@@ -45,8 +54,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         dlyasignalizaciiiblokirovki.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "DlyaSignalizaciiIBlokirovki");
                 startActivity(intent);
@@ -56,8 +64,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         nestacionarnie.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "Nestacionarnie");
                 startActivity(intent);
@@ -67,8 +74,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         dlyapogruzhnihneftyanihelektronasosov.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "DlyaPogruzhnihNeftyanihElektronasosov");
                 startActivity(intent);
@@ -78,8 +84,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         kabelisudovieimorskiegruzonesuschie.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "KabeliSudovieiMorskieGruzoNesuschie");
                 startActivity(intent);
@@ -89,8 +94,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         kabeliupravleniya.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "KabeliUpravleniya");
                 startActivity(intent);
@@ -99,8 +103,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         provodadlyatermopar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "ProvodaDlyaTermopar");
                 startActivity(intent);
@@ -110,8 +113,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         silovie.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "Silovie");
                 startActivity(intent);
@@ -121,8 +123,7 @@ public class AdminCategoryActivity extends AppCompatActivity
 
         siloviedlyaelektroustanovok.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddnewProductActivity.class);
                 intent.putExtra("category", "SilovieDlyaElektroUstanovok");
                 startActivity(intent);

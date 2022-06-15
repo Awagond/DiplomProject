@@ -34,7 +34,7 @@ public class CartActivity extends AppCompatActivity {
     private Button NextProcessBtn;
     private TextView txtTotalBtn, Msgtxt;
     DatabaseReference cartListRef;
-    private int overallTotalPrice;
+    private int overallTotalPrice = 0;
 
 
     @Override
@@ -52,10 +52,13 @@ public class CartActivity extends AppCompatActivity {
         Msgtxt = (TextView) findViewById(R.id.msgtxt);
         Msgtxt.setVisibility(View.GONE);
 
+
+
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtTotalBtn.setText("$" + String.valueOf(overallTotalPrice));
+                txtTotalBtn.setText("Total Price = $" + String.valueOf(overallTotalPrice));
+
                 Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
                 intent.putExtra("Total Price", String.valueOf(overallTotalPrice));
                 startActivity(intent);
@@ -86,9 +89,11 @@ public class CartActivity extends AppCompatActivity {
 
                Picasso.get().load(model.getImage()).into(holder.imgProductImage);
 
-               int oneTypeProductPrice=((Integer.parseInt(model.getPrice()))) * Integer.parseInt(model.getQuantity());
-               overallTotalPrice=overallTotalPrice+oneTypeProductPrice;
+               int oneTypeProductPrice=((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
 
+               overallTotalPrice= overallTotalPrice + oneTypeProductPrice;
+
+                txtTotalBtn.setText("Общая цена : $" + String.valueOf(overallTotalPrice));
 
                 holder.vRectangle_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
