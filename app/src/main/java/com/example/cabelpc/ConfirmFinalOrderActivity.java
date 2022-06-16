@@ -1,7 +1,15 @@
 package com.example.cabelpc;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,6 +33,9 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
     private EditText etxtFullName, etxtPhoneNumber, etxtHomeAddress, etxtCityName;
     private Button shippmentBackbtn, shippmentConfirmBtn;
     private String totalAmount = "";
+    private NotificationManager notificationManager;
+    private static final int NOTIFY_ID = 1;
+    private static String CHANNEL_ID = "CHANNEL_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +52,36 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         shippmentBackbtn = (Button) findViewById(R.id.shippment_back_btn);
         shippmentConfirmBtn = (Button) findViewById(R.id.shippment_confirm_btn);
 
+        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
         shippmentConfirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ConfirmFinalOrderActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                NotificationCompat.Builder notificationBuilder =
+                        new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                                .setAutoCancel(false)
+                                .setSmallIcon(R.drawable.app_logo)
+                                .setWhen(System.currentTimeMillis())
+                                .setContentIntent(pendingIntent)
+                                .setContentTitle("Заказ")
+                                .setContentText("Заказ принят!")
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                createChanel(notificationManager);
+                notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
+
                 check();
             }
         });
+    }
+
+    private void createChanel(NotificationManager manager) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
+            manager.createNotificationChannel(notificationChannel);
+        }
     }
 
     private void check() {
@@ -60,12 +95,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
             Toast.makeText(this, "Укажите город", Toast.LENGTH_SHORT).show();
         } else {
             confirmOrder();
-            sendCheck();
         }
-
-    }
-
-    private void sendCheck() {
 
     }
 
@@ -104,7 +134,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
+                                    if (task.isSuccessful()) {
                                         Toast.makeText(ConfirmFinalOrderActivity.this, "Succes", Toast.LENGTH_SHORT).show();
 
                                         Intent intent = new Intent(ConfirmFinalOrderActivity.this, HomeActivity.class);
