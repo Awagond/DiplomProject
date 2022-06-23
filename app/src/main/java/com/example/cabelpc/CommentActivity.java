@@ -1,94 +1,91 @@
 package com.example.cabelpc;
 
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
+import com.example.cabelpc.Model.Comment;
 import com.example.cabelpc.Prevalent.Prevalent;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+
 public class CommentActivity extends AppCompatActivity {
     private ListView recyclerView;
-    private Button addComBtn;
-    private EditText commentField;
+    private Button sendCom;
+    private EditText comInput;
+    private TextView com_conversation;
     private String name, commentRandomKey;
     private DatabaseReference ComRef;
-    private ArrayAdapter<String> arratAdapter;
-    private ArrayList<String> list_com = new ArrayList<>();
-    private TextView chat_conversation;
-    private String chat_msg,chat_user_name;
+    private String temp_key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
 
-        addComBtn = (Button) findViewById(R.id.send_button);
-        commentField = (EditText) findViewById(R.id.commentField);
-        recyclerView = (ListView) findViewById(R.id.listMessage);
-        arratAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list_com);
-        recyclerView.setAdapter(arratAdapter);
+        sendCom = findViewById(R.id.btn_send_comment);
+        comInput = findViewById(R.id.com_input);
+        com_conversation = findViewById(R.id.textViewCom);
         ComRef = FirebaseDatabase.getInstance().getReference().child("Comment");
         name = Prevalent.currentOnlineUser.getName();
-        chat_conversation = (TextView) findViewById(R.id.textView);
 
-        chat_user_name = getIntent().getExtras().get("user_name").toString();
-        chat_msg = getIntent().getExtras().get("comment_text").toString();
-
-
-        ComRef.addValueEventListener(new ValueEventListener() {
+        sendCom.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Set<String> set = new HashSet<String>();
-                Iterator i = dataSnapshot.getChildren().iterator();
+            public void onClick(View view) {
+                Map<String,Object> map = new HashMap<String, Object>();
+                temp_key = ComRef.push().getKey();
+                ComRef.updateChildren(map);
 
-                while (i.hasNext()) {
-                    set.add(((DataSnapshot) i.next()).getKey());
-                }
+                DatabaseReference message_root = ComRef.child(temp_key);
+                Map<String,Object> map2 = new HashMap<String, Object>();
+                map2.put("name",name);
+                map2.put("msg",comInput.getText().toString());
 
-                list_com.clear();
-                list_com.addAll(set);
+                comInput.setText("");
 
-                arratAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                message_root.updateChildren(map2);
             }
         });
         ComRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                append_chat_conversation(dataSnapshot);
+                getComment(dataSnapshot);
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                getComment(dataSnapshot);
             }
 
             @Override
@@ -106,18 +103,17 @@ public class CommentActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
-    private void append_chat_conversation(DataSnapshot dataSnapshot) {
+    private String comText,comName;
+    private void getComment(DataSnapshot dataSnapshot) {
         Iterator i = dataSnapshot.getChildren().iterator();
 
-        while (i.hasNext()) {
+        while (i.hasNext()){
 
-            chat_msg = (String) ((DataSnapshot) i.next()).getValue();
-            chat_user_name = (String) ((DataSnapshot) i.next()).getValue();
+            comText = (String) ((DataSnapshot)i.next()).getValue();
+            comName = (String) ((DataSnapshot)i.next()).getValue();
 
-            chat_conversation.append("\n" + chat_user_name + " : " + chat_msg + " \n");
+            com_conversation.append(comName +" : "+comText +" \n");
         }
     }
 }

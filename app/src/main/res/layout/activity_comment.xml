@@ -7,31 +7,43 @@
     tools:context=".CommentActivity">
 
 
-    <ListView
-        android:id="@+id/listMessage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="16dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="16dp" />
-
-    <ScrollView
+    <Button
+        android:id="@+id/btn_send_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="Send" />
+
+    <EditText
+        android:id="@+id/com_input"
+        android:hint="Сообщение"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_send_comment"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_toStartOf="@+id/btn_send_comment"
+        android:layout_toLeftOf="@+id/btn_send_comment" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_send_comment"
+        android:layout_alignEnd="@+id/btn_send_comment"
+        android:layout_alignRight="@+id/btn_send_comment"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
 
         <TextView
+            android:id="@+id/textViewCom"
             android:layout_width="match_parent"
-            android:padding="15dp"
             android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView" />
+            android:padding="15dp"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
     </ScrollView>
 
 

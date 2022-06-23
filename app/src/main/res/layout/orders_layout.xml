@@ -80,9 +80,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:text="Показать заказ"
+            android:text="Отправить чек"
             android:textAllCaps="false"
             android:textSize="18dp" />
+
 
     </RelativeLayout>
 

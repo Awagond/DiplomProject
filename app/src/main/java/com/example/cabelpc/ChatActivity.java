@@ -32,7 +32,6 @@ import java.util.Set;
 public class ChatActivity extends AppCompatActivity {
     private ListView recyclerView;
     private Button addBtn;
-    private TextView messageText, messageUser;
     private EditText messageField;
     private String name;
     private DatabaseReference ChatsRef;
@@ -47,9 +46,6 @@ public class ChatActivity extends AppCompatActivity {
         addBtn = (Button) findViewById(R.id.send_button);
 
         messageField = (EditText) findViewById(R.id.messageField);
-
-        messageText = (TextView) findViewById(R.id.message_content);
-        messageUser = (TextView) findViewById(R.id.message_username);
 
         recyclerView = (ListView) findViewById(R.id.listMessage);
 

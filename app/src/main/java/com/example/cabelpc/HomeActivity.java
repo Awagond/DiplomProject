@@ -192,10 +192,6 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         }
-        else if (id == R.id.nav_orders)
-        {
-
-        }
         else if (id == R.id.nav_chat)
         {
             Intent intent = new Intent(HomeActivity.this, ChatActivity.class);

@@ -23,14 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/select_product_image"
-            android:inputType="textMultiLine"
-            android:layout_marginTop="20dp"
-            android:padding="20dp"
-            android:hint="Название продукта"
             android:layout_marginLeft="45dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="45dp"
             android:background="@drawable/buttons"
-            />
+            android:hint="Название продукта"
+            android:inputType="textMultiLine"
+            android:padding="20dp"
+            android:textColorHint="@color/login_color" />
 
 
         <EditText
@@ -45,6 +45,7 @@
             android:layout_marginLeft="45dp"
             android:layout_marginRight="45dp"
             android:background="@drawable/buttons"
+            android:textColorHint="@color/login_color"
             />
 
 
@@ -53,14 +54,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/product_description"
-            android:inputType="textMultiLine"
-            android:layout_marginTop="6dp"
-            android:padding="20dp"
-            android:hint="Цена"
             android:layout_marginLeft="45dp"
+            android:layout_marginTop="6dp"
             android:layout_marginRight="45dp"
             android:background="@drawable/buttons"
-            />
+            android:textColorHint="@color/login_color"
+            android:hint="Цена"
+            android:inputType="textMultiLine"
+            android:padding="20dp" />
 
 
         <Button

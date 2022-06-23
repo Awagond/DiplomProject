@@ -34,8 +34,7 @@ import java.util.Map;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private Button addToCartBtn, comBtn;
-    private Button addComBtn;
+    private Button addToCartBtn, comBtnView, addComBtn;
     private ImageView productImage;
     private EditText commentField;
     private ElegantNumberButton numberButton;
@@ -57,10 +56,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         productID = getIntent().getStringExtra("pid");
 
-        commentField = (EditText) findViewById(R.id.commentField);
-        addComBtn = (Button) findViewById(R.id.btn_send);
+        addComBtn = (Button) findViewById(R.id.btn_send_comment);
         addToCartBtn = (Button) findViewById(R.id.add_product_to_cart_btn);
-        comBtn = (Button) findViewById(R.id.comBtn);
+        comBtnView = (Button) findViewById(R.id.comBtn);
         numberButton = (ElegantNumberButton) findViewById(R.id.number_btn);
         productImage = (ImageView) findViewById(R.id.product_image_details);
         productName = (TextView) findViewById(R.id.product_name_details);
@@ -83,39 +81,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-        comBtn.setOnClickListener(new View.OnClickListener() {
+        comBtnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplication(), CommentActivity.class);
-                intent.putExtra("comment_text",commentField.getText().toString());
-                intent.putExtra("user_name", name);
                 startActivity(intent);
             }
         });
-
-        addComBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-
-                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-                String saveCurrentDate = currentDate.format(calendar.getTime());
-
-                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-                String saveCurrentTime = currentTime.format(calendar.getTime());
-
-                commentRandomKey = saveCurrentDate + "" + saveCurrentTime;
-
-
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put(commentField.getText().toString(),"text");
-                map.put(name, "");
-//                map.put("Time", commentRandomKey);
-                CommentRef.updateChildren(map);
-
-            }
-        });
-
     }
 
 
